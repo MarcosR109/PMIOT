@@ -13,11 +13,10 @@ class importarIotNetCommand extends Command
     /**
      * Execute the console command.
      */
-    // Nombre del comando para ejecutarlo en la terminal
     protected $signature = 'importar:datos';
 
     // Descripción del comando
-    protected $description = 'Importa datos de la base de datos externa a la local';
+    protected $description = 'Importa datos de pmiot a tu bbdd';
 
     public function handle()
     {
