@@ -1,8 +1,23 @@
-<ul *ngFor="let fichaje of this.fichajes">
+<app-header></app-header>
+  
+<div class="fichajes-container">
+    <div class="fichaje-card" *ngFor="let fichaje of fichajes">
+      <h3>Fichaje #{{ fichaje.id }}</h3>
+      <p><strong>Fecha & Hora:</strong> {{ fichaje.fecha | date:'short'}}</p>
+      <p><strong>Evento:</strong> {{ fichaje.tipo_de_evento }}</p>
+      <p><strong>Usuario ID:</strong> {{ fichaje.user_id }}</p>
 
-    <li># : {{fichaje.id}}</li>
-    <li>TIPO DE EVENTO : {{fichaje.tipo_de_evento}}</li>
-    <li>FECHA : {{fichaje.fecha}}</li>
-    <li>USER_ID : {{fichaje.user_id}}</li>
-
-</ul>
+      
+      <div class="card-icons">
+        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="30" viewBox="0 0 24 24" fill="#6200ea">
+            <path d="M12 20C7.58 20 4 16.42 4 12S7.58 4 12 4s8 3.58 8 8-3.58 8-8 8m1-13h-2v6l5.25 3.15L17 14l-4-2.35V7Z"/>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="30" viewBox="0 0 24 24" fill="#6200ea">
+            <path d="M14.4 6l.6 3l-.6 3l-.4 3l.4 3H5V6h9.4M16 4H3v16h13l-1-5l1-5l-1-5Z" />
+          </svg>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer">© 2025 Gestión de Fichajes</div>
+ 

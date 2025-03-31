@@ -25,7 +25,7 @@ class importarIotNetCommand extends Command
         // Consultar la base de datos externa
         $registros = DB::connection('externa')->table('data')
             ->where('topic', 'like', '%identification%')
-            ->select('value') // Selecciona solo el campo que debe ser único
+            ->select('value','timestamp') // Selecciona solo el campo que debe ser único
             ->distinct()
             ->get();
         //Habría que añadir un filtrado por fecha o buscar la manera de que esta consulta SOLO saque los datos que se acaban de dar de alta.
@@ -48,7 +48,7 @@ class importarIotNetCommand extends Command
                 continue;
             }
             $historico = new Historico();
-            $historico->fecha = now();
+            $historico->fecha = $registro->timestamp;
             $historico->tipo_de_evento = 'fichaje';
             $historico->user_id = $user->id;
             $historico->save();

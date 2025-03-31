@@ -1,0 +1,32 @@
+
+<div class="login-container">
+    <div class="login-form">
+      <!-- Imagen del login -->
+      <div class="login-header">
+        <img src="assets/login-image.jpg" alt="Login Image" class="login-image"/>
+      </div>
+      
+      <!-- Título del formulario -->
+      <h2>Iniciar sesión</h2>
+      
+      <!-- Formulario de inicio de sesión -->
+      <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="username">Usuario</label>
+          <input type="text" id="username" name="username" required placeholder="Ingresa tu usuario" />
+        </div> 
+        <div class="form-group">
+          <label for="password">Contraseña</label>
+          <input type="password" id="password" name="password" required placeholder="Ingresa tu contraseña" />
+        </div>
+    
+        <!-- Botón de envío -->
+        <button type="submit" class="login-btn">Iniciar sesión</button>
+        
+        <!-- Mensaje de error en caso de fallar -->
+        <div *ngIf="errorMessage" class="error-message">
+          {{ errorMessage }}
+        </div>
+      </form>
+    </div>
+  </div>

@@ -62,8 +62,8 @@ return [
             ]) : [],
         ], 'externa' => [ // Base de datos ajena
             'driver' => 'mysql',
-            'host' => env('DB_EXTERN_HOST', '127.0.0.1'),
-            'port' => env("DB_EXTERN_PORT",3307),
+            'host' => env   ('DB_EXTERN_HOST', '127.0.0.1'),
+            'port' => env   ("DB_EXTERN_PORT",3306),
             'database' => env('DB_EXTERN_DATABASE', 'iotnet'),
             'username' => env('DB_EXTERN_USERNAME', 'root'),
             'password' => env('DB_EXTERN_PASSWORD', ''),
