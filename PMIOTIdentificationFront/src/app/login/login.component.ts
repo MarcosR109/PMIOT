@@ -1,22 +1,30 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../auth.service'; // Importamos el servicio
-import { Router } from '@angular/router'; // Para la redirección
+//import { AuthService } from '../auth.service'; // Importamos el servicio
+import { Router} from '@angular/router'; // Para la redirección
 import { CommonModule } from '@angular/common'; // Para usar CommonModule
+import { ReactiveFormsModule } from '@angular/forms';
+
 @Component({
-  imports: [CommonModule],
+  imports: [CommonModule,ReactiveFormsModule],
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
+
 export class LoginComponent {
-  username: string = '';
+  
+  /*username: string = '';
   password: string = '';
   errorMessage: string = ''; // Para mostrar mensajes de error
+*/
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private router: Router) { }
+  //constructor(private authService: AuthService, private router: Router) { }
 
-  onSubmit(): void {
-    this.authService.login(this.username, this.password).subscribe(
+  onLogin() {
+
+    this.router.navigate(['/fichajes']);
+    /*this.authService.login(this.username, this.password).subscribe(
       (response) => {
         // Si la respuesta es exitosa, almacenamos el token y redirigimos
         localStorage.setItem('token', response.token); // Guardamos el token
@@ -26,6 +34,7 @@ export class LoginComponent {
         // Si la autenticación falla, mostramos el mensaje de error
         this.errorMessage = 'Credenciales incorrectas. Inténtalo de nuevo.';
       }
-    );
+    );*/
   }
 }
+

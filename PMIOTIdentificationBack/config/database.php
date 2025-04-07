@@ -60,7 +60,8 @@ return [
             'options' => extension_loaded('pdo_mysql') ? array_filter([
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
-        ], 'externa' => [ // Base de datos ajena
+        ], 'externa' => [ 
+            // Base de datos ajena
             'driver' => 'mysql',
             'host' => env   ('DB_EXTERN_HOST', '127.0.0.1'),
             'port' => env   ("DB_EXTERN_PORT",3306),

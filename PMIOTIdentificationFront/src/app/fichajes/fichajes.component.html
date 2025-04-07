@@ -1,23 +1,62 @@
 <app-header></app-header>
-  
-<div class="fichajes-container">
-    <div class="fichaje-card" *ngFor="let fichaje of fichajes">
-      <h3>Fichaje #{{ fichaje.id }}</h3>
-      <p><strong>Fecha & Hora:</strong> {{ fichaje.fecha | date:'short'}}</p>
-      <p><strong>Evento:</strong> {{ fichaje.tipo_de_evento }}</p>
-      <p><strong>Usuario ID:</strong> {{ fichaje.user_id }}</p>
 
-      
-      <div class="card-icons">
-        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="30" viewBox="0 0 24 24" fill="#6200ea">
+<div class="fichajes-container">
+  <!-- Filtros mejorados con clases específicas -->
+  <div class="filters-container">
+    <div class="filter-group">
+      <label for="userFilter">Filtrar por Usuario</label>
+      <input type="text" id="userFilter" [(ngModel)]="filterUser" 
+             class="filter-input" placeholder="ID o nombre...">
+    </div>
+
+    <div class="filter-group">
+      <label for="dateFilter">Filtrar por Fecha</label>
+      <input type="date" id="dateFilter" [(ngModel)]="filterDate" 
+             class="filter-input">
+    </div>
+
+    <div class="filter-group">
+      <label for="timeFilter">Filtrar por Hora</label>
+      <input type="time" id="timeFilter" [(ngModel)]="filterHour" 
+             class="filter-input" (change)="filteredFichajes()">
+    </div>
+  </div>
+
+  <!-- Listado de fichajes -->
+  <div class="fichajes-grid">
+    <div class="fichaje-card" *ngFor="let fichaje of filteredFichajes()">
+      <div class="card-header">
+        <h3 class="card-title">Fichaje #{{ fichaje.id }}</h3>
+        <span class="event-badge" [ngClass]="{
+          'entrada': fichaje.tipo_de_evento === 'entrada',
+          'salida': fichaje.tipo_de_evento === 'salida',
+          'fichaje': fichaje.tipo_de_evento === 'fichaje'
+        }">
+          {{ fichaje.tipo_de_evento | titlecase }}
+        </span>
+      </div>
+
+      <div class="card-body">
+        <p class="card-text"><i class="icon-clock"></i> {{ fichaje.fecha | date:'medium' }}</p>
+        <p class="card-text"><i class="icon-user"></i> Usuario ID: {{ fichaje.user_id }}</p>
+      </div>
+
+      <div class="card-actions">
+        <button class="icon-btn" title="Detalles">
+          <svg class="icon" viewBox="0 0 24 24">
             <path d="M12 20C7.58 20 4 16.42 4 12S7.58 4 12 4s8 3.58 8 8-3.58 8-8 8m1-13h-2v6l5.25 3.15L17 14l-4-2.35V7Z"/>
-        </svg>
-        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="30" viewBox="0 0 24 24" fill="#6200ea">
-            <path d="M14.4 6l.6 3l-.6 3l-.4 3l.4 3H5V6h9.4M16 4H3v16h13l-1-5l1-5l-1-5Z" />
           </svg>
+        </button>
+        <button class="icon-btn" title="Editar">
+          <svg class="icon" viewBox="0 0 24 24">
+            <path d="M14.4 6l.6 3l-.6 3l-.4 3l.4 3H5V6h9.4M16 4H3v16h13l-1-5l1-5l-1-5Z"/>
+          </svg>
+        </button>
       </div>
     </div>
   </div>
-  
-  <div class="footer">© 2025 Gestión de Fichajes</div>
- 
+</div>
+
+<footer class="main-footer">
+  © 2025 Sistema de Gestión de Fichajes
+</footer>

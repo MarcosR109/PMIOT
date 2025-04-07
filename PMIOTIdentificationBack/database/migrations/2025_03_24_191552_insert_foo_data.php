@@ -12,8 +12,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        DB::statement("INSERT INTO RFIDS (serial) VALUES ('296FAC7A'), ('DBCFF40A')");
-        DB::statement("INSERT INTO USERS (nombre, apellido, name, email, password, rfid_id,grupo,rol) VALUES 
+        DB::statement("INSERT INTO rfids (serial) VALUES ('296FAC7A'), ('DBCFF40A'),('E35671F5')");
+        DB::statement("INSERT INTO users (nombre, apellido, name, email, password, rfid_id,grupo,rol) VALUES 
             ('Fulgencio', 'Fulgenciez', 'Fulgencio1', 'fulgencio1@email.com', '12345678', 1,'A',1),
             ('Paco', 'Mer', 'Tortilla', 'paco@mer.com', '12345678', 2,'B',1)
         ");
