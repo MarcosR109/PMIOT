@@ -14,25 +14,23 @@ import { FormsModule } from '@angular/forms'; // Importa FormsModule aquí
 export class FichajesComponent implements OnInit {
   fichajes: {
     id: number;
-    created_at: Date;
-    updated_at: Date;
+    created_at: Date | null;
+    updated_at: Date | null;
     fecha: any;
     tipo_de_evento: string;
     user_id: number;
+    nombre: string;
   }[] = [];
-  filterHour: string = '';  // Formato 'HH:MM' (ej: '11:53' para filtrar fichajes a las 11:53 AM)
-  filterUser: string = ''; // Filtro por usuario
-  filterDate: any; // Filtro por fecha
+  filterHour: string = ''; 
+  filterUser: string = ''; 
+  filterDate: any;         
 
   constructor(private fichajesService: FichajesService) {}
 
   ngOnInit() {
-    this.fichajesService.getFichajes().subscribe((data: any) => {
-      this.fichajes = data['Fichajes encontrados'];
-    });
+    this.fichajes = fichajes;
   }
 
-  // Método para filtrar los fichajes
   filteredFichajes() {
     return this.fichajes.filter((fichaje) => {
       const fichajeDate = new Date(fichaje.fecha);  // Convertir el string a objeto Date
@@ -49,3 +47,132 @@ export class FichajesComponent implements OnInit {
   }
   
 }
+
+export const fichajes = [
+    {
+        "id": 1,
+        "created_at": null,
+        "updated_at": null,
+        "fecha": "2025-04-07 08:01:15",
+        "tipo_de_evento": "fichaje",
+        "user_id": 1,
+        "nombre": "Laura Martínez"
+    },
+    {
+        "id": 2,
+        "created_at": null,
+        "updated_at": null,
+        "fecha": "2025-04-07 08:15:44",
+        "tipo_de_evento": "fichaje",
+        "user_id": 2,
+        "nombre": "Carlos Ramírez"
+    },
+    {
+        "id": 3,
+        "created_at": null,
+        "updated_at": null,
+        "fecha": "2025-04-07 08:22:10",
+        "tipo_de_evento": "fichaje",
+        "user_id": 3,
+        "nombre": "Ana Torres"
+    },
+    {
+        "id": 4,
+        "created_at": null,
+        "updated_at": null,
+        "fecha": "2025-04-07 08:35:32",
+        "tipo_de_evento": "fichaje",
+        "user_id": 4,
+        "nombre": "Diego Fernández"
+    },
+    {
+        "id": 5,
+        "created_at": null,
+        "updated_at": null,
+        "fecha": "2025-04-07 08:41:23",
+        "tipo_de_evento": "fichaje",
+        "user_id": 5,
+        "nombre": "María Gómez"
+    },
+    {
+        "id": 6,
+        "created_at": null,
+        "updated_at": null,
+        "fecha": "2025-04-07 09:02:49",
+        "tipo_de_evento": "fichaje",
+        "user_id": 1,
+        "nombre": "Laura Martínez"
+    },
+    {
+        "id": 7,
+        "created_at": null,
+        "updated_at": null,
+        "fecha": "2025-04-07 09:12:06",
+        "tipo_de_evento": "fichaje",
+        "user_id": 3,
+        "nombre": "Ana Torres"
+    },
+    {
+        "id": 8,
+        "created_at": null,
+        "updated_at": null,
+        "fecha": "2025-04-07 09:15:58",
+        "tipo_de_evento": "fichaje",
+        "user_id": 2,
+        "nombre": "Carlos Ramírez"
+    },
+    {
+        "id": 9,
+        "created_at": null,
+        "updated_at": null,
+        "fecha": "2025-04-07 09:25:04",
+        "tipo_de_evento": "fichaje",
+        "user_id": 4,
+        "nombre": "Diego Fernández"
+    },
+    {
+        "id": 10,
+        "created_at": null,
+        "updated_at": null,
+        "fecha": "2025-04-07 09:45:18",
+        "tipo_de_evento": "fichaje",
+        "user_id": 5,
+        "nombre": "María Gómez"
+    },
+    {
+        "id": 11,
+        "created_at": null,
+        "updated_at": null,
+        "fecha": "2025-04-07 10:03:32",
+        "tipo_de_evento": "fichaje",
+        "user_id": 1,
+        "nombre": "Laura Martínez"
+    },
+    {
+        "id": 12,
+        "created_at": null,
+        "updated_at": null,
+        "fecha": "2025-04-07 10:20:45",
+        "tipo_de_evento": "fichaje",
+        "user_id": 2,
+        "nombre": "Carlos Ramírez"
+    },
+    {
+        "id": 13,
+        "created_at": null,
+        "updated_at": null,
+        "fecha": "2025-04-07 10:29:17",
+        "tipo_de_evento": "fichaje",
+        "user_id": 3,
+        "nombre": "Ana Torres"
+    },
+    {
+        "id": 14,
+        "created_at": null,
+        "updated_at": null,
+        "fecha": "2025-04-07 10:55:46",
+        "tipo_de_evento": "fichaje",
+        "user_id": 5,
+        "nombre": "María Gómez"
+    }
+]
